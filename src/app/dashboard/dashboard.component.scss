@@ -1,0 +1,32 @@
+.grid-container {
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 240px calc(100vw - 240px);
+  grid-template-rows: 100%;
+  grid-template-areas:
+    "submenu content"
+    "submenu footer";
+}
+
+@media screen and (max-width: 960px) {
+  .grid-container {
+    height: calc(100vh - 55px);
+  }
+}
+
+.submenu {
+  padding: 20px;
+  background: var(--surface-a); //lighten(#343e4d, 10%);
+  border-right: 1px solid #343e4d;
+  grid-area: submenu;
+}
+
+.content {
+  // background: lighten(#343e4d, 20%);
+  padding: 20px;
+  padding-bottom: 200px !important;
+  grid-area: content;
+}
+

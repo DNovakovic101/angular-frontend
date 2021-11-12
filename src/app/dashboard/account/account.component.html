@@ -1,0 +1,87 @@
+
+<div class="center" *ngIf="showProgressSpinner">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="wrapper" *ngIf="!showProgressSpinner">
+  <p-panel>
+    <p-header><h3>Account Data</h3></p-header>
+
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+      <div class="p-field p-mb-5 p-mt-2">
+        <span class="p-float-label">
+          <input pInputText type="text" id="firstname" name="firstname" formControlName="firstname" />
+          <label for="firstname">firstname</label>
+        </span>
+
+        <div
+          *ngIf="accountForm.get('firstname').invalid && (accountForm.get('firstname').dirty || accountForm.get('firstname').touched)">
+          <small *ngIf="accountForm.get('firstname').hasError('required')" class="p-invalid">Pflichtfeld</small>
+          <small *ngIf="accountForm.get('firstname').hasError('min')" class="p-invalid">zu kurz</small>
+          <small *ngIf="accountForm.get('firstname').hasError('max')" class="p-invalid">zu lang</small>
+        </div>
+      </div>
+
+      <div class="p-field p-mb-5 p-mt-2">
+        <span class="p-float-label">
+          <input pInputText type="text" id="lastname" name="lastname" formControlName="lastname" />
+          <label for="lastname">lastname</label>
+        </span>
+
+        <div
+          *ngIf="accountForm.get('lastname').invalid && (accountForm.get('lastname').dirty || accountForm.get('lastname').touched)">
+          <small *ngIf="accountForm.get('lastname').hasError('required')" class="p-invalid">Pflichtfeld</small>
+          <small *ngIf="accountForm.get('lastname').hasError('min')" class="p-invalid">zu kurz</small>
+          <small *ngIf="accountForm.get('lastname').hasError('max')" class="p-invalid">zu lang</small>
+        </div>
+      </div>
+
+      <div class="p-field p-mb-5 p-mt-2">
+        <span class="p-float-label">
+          <input pInputText type="text" id="street" name="street" formControlName="street" />
+          <label for="street">street</label>
+        </span>
+
+        <div
+          *ngIf="accountForm.get('street').invalid && (accountForm.get('street').dirty || accountForm.get('street').touched)">
+          <small *ngIf="accountForm.get('street').hasError('required')" class="p-invalid">Pflichtfeld</small>
+          <small *ngIf="accountForm.get('street').hasError('min')" class="p-invalid">zu kurz</small>
+          <small *ngIf="accountForm.get('street').hasError('max')" class="p-invalid">zu lang</small>
+        </div>
+      </div>
+
+      <div class="p-field p-mb-5 p-mt-2">
+        <span class="p-float-label">
+          <input pInputText type="text" id="code_postale" name="code_postale" formControlName="code_postale" />
+          <label for="code_postale">code_postale</label>
+        </span>
+
+        <div
+          *ngIf="accountForm.get('code_postale').invalid && (accountForm.get('code_postale').dirty || accountForm.get('code_postale').touched)">
+          <small *ngIf="accountForm.get('code_postale').hasError('required')" class="p-invalid">Pflichtfeld</small>
+          <small *ngIf="accountForm.get('code_postale').hasError('pattern')" class="p-invalid">bitte eine gültige PLZ eingeben</small>
+        </div>
+      </div>
+
+      <div class="p-field p-mb-5 p-mt-2">
+        <span class="p-float-label">
+          <input pInputText type="text" id="city" name="city" formControlName="city" />
+          <label for="city">city</label>
+        </span>
+
+        <div
+          *ngIf="accountForm.get('city').invalid && (accountForm.get('city').dirty || accountForm.get('city').touched)">
+          <small *ngIf="accountForm.get('city').hasError('required')" class="p-invalid">Pflichtfeld</small>
+          <small *ngIf="accountForm.get('city').hasError('min')" class="p-invalid">zu kurz</small>
+          <small *ngIf="accountForm.get('city').hasError('max')" class="p-invalid">zu lang</small>
+        </div>
+      </div>
+
+      <div class="p-field p-mb-0">
+        <button pButton type="submit" [disabled]="accountForm.invalid || accountForm.untouched || accountForm.pristine" class="p-button-outlined p-button-success" label="save Data"></button>
+      </div>
+    </form>
+
+  </p-panel>
+  <p-toast position="bottom-right"></p-toast>
+</div>

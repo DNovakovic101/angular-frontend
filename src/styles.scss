@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+*,
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+}
+
+.nav-menu > .p-menubar {
+    border-radius: 0 !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+a.p-menuitem-link-active {
+    background: var(--surface-d);
+    
+    >span.p-menuitem-text {
+        font-weight: bold;
+    }
+}

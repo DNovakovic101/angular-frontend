@@ -1,0 +1,43 @@
+<div class="wrapper">
+    <p-card class="login-card">
+        <p-header>
+            <h1>Login</h1>
+        </p-header>
+        <form #loginForm="ngForm" (ngSubmit)="formSubmit(loginForm)">
+            <div class="p-field p-mb-5 p-mt-2">
+                <span class="p-float-label">
+                    <input pInputText type="text" id="email" name="email" required
+                        pattern="^[^ \t\r\n\f]+@[^ \t\r\n\f]+[\.]{1}[a-zA-Z]{2,24}$" maxlength="250"
+                        [ngModel]="userData.email" #emailControl="ngModel" />
+                    <label for="email">E-Mail</label>
+                </span>
+                <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)">
+                    <small *ngIf="emailControl.hasError('required')" class="p-invalid">Pflichtfeld</small>
+                    <small *ngIf="emailControl.hasError('pattern')" class="p-invalid">ungültige EMail Adresse</small>
+                    <small *ngIf="emailControl.hasError('maxlength')" class="p-invalid">Maximum 250 Zeichen...</small>
+                </div>
+            </div>
+
+
+            <div class="p-field p-mb-5">
+                <span class="p-float-label">
+                    <input pInputText type="password" id="password" name="password" required minlength="6"
+                        maxlength="250" [ngModel]="userData.password" #lastNameControl="ngModel" />
+                    <label for="password">Passwort</label>
+                </span>
+                <div *ngIf="lastNameControl.invalid && (lastNameControl.dirty || lastNameControl.touched)">
+                    <small *ngIf="lastNameControl.hasError('required')" class="p-invalid">Pflichtfeld</small>
+                    <small *ngIf="lastNameControl.hasError('maxlength')" class="p-invalid">Maximum 250 Zeichen...</small>
+                    <small *ngIf="lastNameControl.hasError('minlength')" class="p-invalid">Minimum 6 Zeichen...</small>
+                </div>
+            </div>
+
+            <div class="p-field p-mb-0">
+                <button pButton type="submit" [disabled]="loginForm.invalid" class="p-button-outlined "
+                    label="login"></button>
+            </div>
+        </form>
+
+    </p-card>
+</div>
+<p-toast position="bottom-right"></p-toast>

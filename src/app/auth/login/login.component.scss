@@ -1,0 +1,35 @@
+.wrapper {
+    .login-card {
+        margin-top: 70px;
+        height: 100%;
+        //border: 2px solid red;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        //justify-content: center;
+
+        form {
+            width: 400px;
+
+            input,
+            button {
+                width: 100%;
+            }
+
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.5rem;
+            padding-top: 7px;
+        }
+
+        // .error-msg {
+        //     font-size: 0.8rem;
+        //     background: var(--primary-text);
+        //     font-style: italic;
+        // }
+    }
+}

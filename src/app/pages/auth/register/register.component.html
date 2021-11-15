@@ -1,0 +1,135 @@
+<div class="centerSpinner" *ngIf="showProgressSpinner">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="flex align-items-center justify-content-center" *ngIf="!showProgressSpinner">
+  <p-card styleClass="w-30rem mt-8" header="{{'PAGES.REGISTRATION.TITLE' | translate}}">
+    <form (ngSubmit)="formSubmit()" [formGroup]="registrationForm">
+      <span class="p-float-label mt-5 ">
+        <p-dropdown  [options]="accountTypes" formControlName="accountType" optionValue="typeValue" id="accountType" styleClass="w-full" >
+          <ng-template let-selectedItem pTemplate="selectedItem">
+            {{selectedItem.typeName | translate}}
+          </ng-template>
+          <ng-template pTemplate="typeName" let-item>
+            {{item.typeName | translate}}
+          </ng-template>
+        </p-dropdown>
+        <label for="accountType">{{"ACCOUNT_TYPE.SELECTION_LABEL" | translate}}
+        </label>
+      </span>
+      <div
+        *ngIf="registrationForm.get('accountType').invalid && (registrationForm.get('accountType').dirty || registrationForm.get('accountType').touched)">
+        <small *ngIf="registrationForm.get('accountType').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}</small>
+      </div>
+
+      <div *ngIf="registrationForm.get('accountType').value === 1">
+        <span class="p-float-label mt-5">
+          <input class="w-full" pInputText type="text" id="companyName" formControlName="companyName" required>
+          <label for="companyName">{{"ACCOUNT_DATA.COMPANY_NAME" | translate}}</label>
+        </span>
+        <div *ngIf="registrationForm.get('companyName').invalid && (registrationForm.get('companyName').dirty || registrationForm.get('companyName').touched)">
+          <small *ngIf="registrationForm.get('companyName').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}</small>
+        </div>
+      </div>
+
+      <span class="p-float-label mt-5">
+        <input class="w-full" pInputText type="text" id="firstName" formControlName="firstName"/>
+        <label for="firstname">{{"ACCOUNT_DATA.FIRST_NAME" | translate}}</label>
+      </span>
+      <div *ngIf="registrationForm.get('firstName').invalid && (registrationForm.get('firstName').dirty || registrationForm.get('firstName').touched)">
+        <small class="p-error" *ngIf="registrationForm.get('firstName').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}</small>
+      </div>
+
+      <span class="p-float-label mt-5">
+        <input class="w-full" pInputText type="text" id="lastName" formControlName="lastName"/>
+        <label for="lastname">{{"ACCOUNT_DATA.LAST_NAME" | translate}}</label>
+      </span>
+      <div *ngIf="registrationForm.get('lastName').invalid && (registrationForm.get('lastName').dirty || registrationForm.get('lastName').touched)">
+        <small class="p-error" *ngIf="registrationForm.get('lastName').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}</small>
+      </div>
+
+      <div *ngIf="registrationForm.get('accountType').value === 1">
+        <span class="p-float-label mt-5">
+          <input class="w-full" pInputText type="text" id="street" formControlName="street"
+                 [required]="registrationForm.get('accountType').value === 1"/>
+          <label for="street">{{"ACCOUNT_DATA.STREET" | translate}}</label>
+        </span>
+        <div *ngIf="registrationForm.get('street').invalid && (registrationForm.get('street').dirty || registrationForm.get('street').touched)">
+          <small class="p-error" *ngIf="registrationForm.get('street').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}</small>
+        </div>
+      </div>
+
+      <span class="p-float-label mt-5">
+        <input class="w-full" pInputText type="text" id="city" formControlName="city"/>
+        <label for="city">{{"ACCOUNT_DATA.CITY" | translate}}</label>
+      </span>
+      <div *ngIf="registrationForm.get('city').invalid && (registrationForm.get('city').dirty || registrationForm.get('city').touched)">
+        <small class="p-error" *ngIf="registrationForm.get('city').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}
+        </small>
+      </div>
+
+      <span class="p-float-label mt-5">
+        <input class="w-full" pInputText type="text" id="postalCode" formControlName="postalCode"/>
+        <label for="lastname">{{"ACCOUNT_DATA.POSTAL_CODE" | translate}}</label>
+      </span>
+      <div *ngIf="registrationForm.get('postalCode').invalid && (registrationForm.get('postalCode').dirty || registrationForm.get('postalCode').touched)">
+        <small class="p-error" *ngIf="registrationForm.get('postalCode').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}</small>
+        <small class="p-error" *ngIf="registrationForm.get('postalCode').hasError('pattern')">{{"VALIDATORS.PATTERN_ONLY_DIGITS" | translate}}</small>
+        <small class="p-error" *ngIf="registrationForm.get('postalCode').hasError('maxlength')">&nbsp;{{"VALIDATORS.PATTERN_MAX_LENGTH_4" | translate}}</small>
+        <small class="p-error" *ngIf="registrationForm.get('postalCode').hasError('minlength')">&nbsp;{{"VALIDATORS.PATTERN_MIN_LENGTH_4" | translate}}</small>
+      </div>
+
+      <span class="p-float-label mt-5">
+        <input class="w-full" pInputText type="text" id="email" formControlName="email"/>
+        <label for="email">{{"ACCOUNT_DATA.EMAIL" | translate}}</label>
+      </span>
+      <div class="mb-2" *ngIf="registrationForm.get('email').invalid && (registrationForm.get('email').dirty || registrationForm.get('email').touched)">
+        <small class="p-error" *ngIf="registrationForm.get('email').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}</small>
+        <small class="p-error" *ngIf="registrationForm.get('email').hasError('pattern')">{{"VALIDATORS.PATTERN_EMAIL" | translate}}</small>
+        <small class="p-error" *ngIf="registrationForm.get('email').hasError('maxlength')">{{"VALIDATORS.PATTERN_MAX_LENGTH_250" | translate}}</small>
+      </div>
+
+
+      <span class="p-float-label mt-5">
+        <input class="w-full" pInputText type="password" id="password" formControlName="password"/>
+        <label for="password">{{"ACCOUNT_DATA.PASSWORD" | translate}}</label>
+      </span>
+      <div *ngIf="registrationForm.get('password').invalid && (registrationForm.get('password').dirty || registrationForm.get('password').touched)">
+        <small class="p-error" *ngIf="registrationForm.get('password').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}</small>
+        <small class="p-error" *ngIf="registrationForm.get('password').hasError('maxlength')">{{"VALIDATORS.PATTERN_MAX_LENGTH_250" | translate}}</small>
+        <small class="p-error" *ngIf="registrationForm.get('password').hasError('minlength')">{{"VALIDATORS.PATTERN_MIN_LENGTH_6" | translate}}</small>
+      </div>
+
+      <span class="p-float-label mt-5">
+        <input class="w-full" pInputText type="password" id="passwordConfirm" formControlName="passwordConfirm"/>
+        <label for="passwordConfirm">{{"ACCOUNT_DATA.PASSWORD_CONFIRMATION_LABEL" | translate}}</label>
+      </span>
+      <div *ngIf="(registrationForm.get('passwordConfirm').invalid || registrationForm.hasError('passwordMissmatch'))
+          && (registrationForm.get('passwordConfirm').dirty || registrationForm.get('passwordConfirm').touched)">
+        <small class="p-error">{{"VALIDATORS.PASSWORD_MISMATCH" | translate}}</small>
+      </div>
+
+      <div class="flex justify-content-center">
+        <div>
+          <div class="mt-5 mr-4">
+            <p-toggleButton onLabel="{{'TERMS_CONDITIONS.ACCEPT_AGBS' | translate}}" offLabel="{{'TERMS_CONDITIONS.ACCEPT_AGBS' | translate}}" onIcon="pi pi-check" offIcon="pi pi-times" formControlName="acceptAGBs"></p-toggleButton>
+          </div>
+          <div *ngIf="registrationForm.get('acceptAGBs').invalid && (registrationForm.get('acceptAGBs').dirty || registrationForm.get('acceptAGBs').touched)">
+            <small class="p-error" *ngIf="registrationForm.get('acceptAGBs').hasError('required')">{{"VALIDATORS.REQUIRED" | translate}}</small>
+          </div>
+        </div>
+
+        <div>
+          <div class="mt-5 flex justify-content-end" >
+            <p-toggleButton onLabel="{{'TERMS_CONDITIONS.ACCEPT_ANB' | translate}}" offLabel="{{'TERMS_CONDITIONS.ACCEPT_ANB' | translate}}" onIcon="pi pi-check" offIcon="pi pi-times" formControlName="acceptANB"></p-toggleButton>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-content-end mt-5">
+        <button pButton type="submit" [disabled]="registrationForm.invalid" class="p-button-outlined " label='{{"BUTTONS.REGISTER" | translate}}'></button>
+      </div>
+    </form>
+  </p-card>
+</div>
+<p-toast position="bottom-right"></p-toast>

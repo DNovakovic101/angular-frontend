@@ -1,0 +1,25 @@
+<div class="flex align-items-center justify-content-center">
+  <p-card styleClass="w-30rem mt-8" header="{{'PAGES.LOG_IN.TITLE' | translate}}">
+    <form (ngSubmit)="formSubmit()" [formGroup]="logInForm">
+      <span class="p-float-label mt-5">
+        <input class="w-full" pInputText type="text" id="email" formControlName="email" />
+        <label for="email">{{'PAGES.LOG_IN.EMAIL' | translate}}</label>
+      </span>
+
+      <span class="p-float-label mt-5">
+        <input class="w-full" pInputText type="password" id="password" formControlName="password" />
+        <label for="password">{{'PAGES.LOG_IN.PASSWORD' | translate}}</label>
+      </span>
+
+      <div class="flex align-items-center justify-content-end">
+        <button pButton class="mt-5" type="submit" [loading]="this.isLoading" [disabled]="logInForm.invalid" label="{{'PAGES.LOG_IN.SUBMIT' | translate}}"></button>
+      </div>
+
+      <div class="mt-5 flex align-items-center justify-content-center">
+        <button pButton class="p-button-link" routerLink="/register" label="{{'PAGES.LOG_IN.CTA_REGISTER' | translate}}"></button>
+      </div>
+    </form>
+  </p-card>
+</div>
+
+<p-toast position="bottom-right"></p-toast>

@@ -1,0 +1,80 @@
+{
+  "GENERAL": {
+    "SITE_NAME": "Offertolino"
+  },
+  "LANGUAGE": {
+    "EN": "English",
+    "DE": "Deutsch",
+    "FR": "French",
+    "IT": "Italian"
+  },
+  "THEME": {
+    "LIGHT_THEME": "Light",
+    "DARK_THEME": "Dark"
+  },
+  "NAVIGATION": {
+    "LOG_IN": "Log In",
+    "REGISTER": "Register",
+    "DASHBOARD": "Dashboard",
+    "LOG_OUT": "Log Out"
+  },
+  "PAGES": {
+    "LOG_IN": {
+      "TITLE": "Log In",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Password",
+      "SUBMIT": "Log In",
+      "CTA_REGISTER": "Don't have an account? Register now"
+    },
+    "REGISTRATION": {
+      "TITLE": "Registration"
+    }
+  },
+  "ACCOUNT_TYPE": {
+    "SELECTION_LABEL": "Select an account type:",
+    "CUSTOMER": "Customer",
+    "BODY_SHOP": "Body shop"
+  },
+  "ACCOUNT_DATA": {
+    "HEADER": "Account Data",
+    "REGISTRATION_HEADER": "Registration",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "STREET": "Street",
+    "POSTAL_CODE": "Postal Code",
+    "CITY": "City",
+    "COMPANY_NAME": "Company name",
+    "EMAIL": "Email address",
+    "PASSWORD": "Password",
+    "PASSWORD_CONFIRMATION_LABEL": "Confirm password"
+  },
+  "VALIDATORS": {
+    "REQUIRED": "Required!",
+    "TOO_SHORT": "Too short!",
+    "TOO_LONG": "Too long!",
+    "PATTERN_MISMATCH": "Pattern doesn't match!",
+    "PATTERN_ONLY_DIGITS": "Postal code can't contain any digits!",
+    "PATTERN_MAX_LENGTH_4": "Only 4 digits required",
+    "PATTERN_MAX_LENGTH_250": "250 characters maximum",
+    "PATTERN_MIN_LENGTH_4": "Must be a 4 digit code",
+    "PATTERN_MIN_LENGTH_6": "Minimum 6 characters",
+    "PATTERN_EMAIL": "Email address is not valid!",
+    "PASSWORD_MISMATCH": "Passwords must match!"
+  },
+  "TERMS_CONDITIONS": {
+    "ACCEPT_AGBS": "Accept AGB's",
+    "ACCEPT_ANB": "Accept ANB"
+  },
+  "BUTTONS": {
+    "UPDATE_ACCOUNT_DATA": "Save Data",
+    "REGISTER": "Register",
+    "LOGIN": "Login",
+    "LOGOUT": " Logout"
+  },
+  "MENU_ITEMS": {
+    "DASHBOARD": "Dashboard",
+    "ACCOUNT": "Account",
+    "OTHER": "Other",
+    "INFO": "Info"
+  }
+}

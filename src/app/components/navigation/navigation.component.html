@@ -1,0 +1,49 @@
+<div class="navigation-component">
+  <div class="lang-and-theme">
+    <p-dropdown class="dropdown-chooser" (onChange)="languageChanged()" [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="label">
+      <ng-template pTemplate="selectedItem">
+        <div class="flex align-items-center">
+          <img class="mr-2 h-1rem w-auto" src="{{ 'assets/img/flag/' + selectedLanguage.code + '.svg' }}" alt="{{ selectedLanguage.label | translate }}">
+          <span>{{ selectedLanguage.label | translate }}</span>
+        </div>
+      </ng-template>
+
+      <ng-template let-language pTemplate="item">
+        <div class="flex align-items-center">
+          <img class="mr-2 h-1rem w-auto" src="{{ 'assets/img/flag/' + language.code + '.svg' }}" alt="{{ language.label | translate }}">
+          <span>{{ language.label | translate }}</span>
+        </div>
+      </ng-template>
+    </p-dropdown>
+
+    <p-dropdown class="dropdown-chooser" (onChange)="themeChanged()" [options]="themes" [(ngModel)]="selectedTheme" optionLabel="label">
+      <ng-template pTemplate="selectedItem">
+        <div class="flex align-items-center">
+          <img class="mr-2 h-1rem w-auto" src="{{ 'assets/img/theme/' + selectedTheme.code + '.svg' }}" alt="{{ selectedTheme.label | translate }}">
+          <span>{{ selectedTheme.label | translate }}</span>
+        </div>
+      </ng-template>
+
+      <ng-template let-theme pTemplate="item">
+        <div class="flex align-items-center">
+          <img class="mr-2 h-1rem w-auto" src="{{ 'assets/img/theme/' + theme.code + '.svg' }}" alt="{{ theme.label | translate }}">
+          <span>{{ theme.label | translate }}</span>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+  <div class="logo">
+    <a routerLink="/">
+      Offertolino
+    </a>
+  </div>
+
+  <div class="navigation-buttons">
+    <button *ngIf="!isLoggedIn()" pButton routerLink="/login" label="{{ 'NAVIGATION.LOG_IN' | translate }}" icon="pi pi-users" class="p-button-link"></button>
+    <button *ngIf="!isLoggedIn()" pButton routerLink="/register" label="{{ 'NAVIGATION.REGISTER' | translate }}" icon="pi pi-users" class="p-button-link"></button>
+
+    <button *ngIf="isLoggedIn()" pButton routerLink="/dashboard" label="{{ 'NAVIGATION.DASHBOARD' | translate }}" icon="pi pi-users" class="p-button-link"></button>
+    <button *ngIf="isLoggedIn()" pButton routerLink="/" (click)="logOut()" label="{{ 'NAVIGATION.LOG_OUT' | translate }}" icon="pi pi-users" class="p-button-link"></button>
+  </div>
+</div>
